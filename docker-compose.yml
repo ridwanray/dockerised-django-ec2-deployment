@@ -1,0 +1,61 @@
+version: '3.9'
+
+services:
+  api: &api
+    build:
+      context: .
+      dockerfile: docker/prod/Dockerfile
+    image: pro-deploy
+    command: gunicorn -w 4 core.wsgi -b 0.0.0.0:8000 --timeout 420
+    volumes:
+      - ./app:/app
+    ports:
+      - '8000:8000'
+    env_file:
+      - ./.env
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3.8-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbit_user
+      - RABBITMQ_DEFAULT_PASS=rabbit_pass
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+
+  celery:
+    <<: *api
+    command: celery -A core worker --loglevel=info 
+    ports: []
+    volumes:
+      - ./app:/app
+    env_file:
+      - ./.env
+    depends_on:
+      - api
+
+  celery-beat:
+    <<: *api
+    command: celery -A core beat -l info
+    ports: []
+    volumes:
+      - ./app:/app
+    env_file:
+      - ./.env
+    depends_on:
+      - celery
+
+  dashboard:
+    <<: *api
+    command: celery --broker=${RABBITMQ_URL} flower --port=5555
+    ports:
+      - '25559:5555'
+    env_file:
+      - ./.env
+    depends_on:
+      - api
+      - celery
