@@ -10,9 +10,9 @@ celerybeat-schedule
 setup.cfg
 .env
 .env.deploy
-# **/migrations/**
-# !**/migrations
-# !**/migrations/__init__.py
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
 .DS_Store
 celerybeat.pid
 app/core/logs/debug.log
