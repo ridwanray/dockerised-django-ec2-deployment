@@ -37,6 +37,7 @@ services:
       - ./.env
     depends_on:
       - api
+      - rabbitmq
 
   celery-beat:
     <<: *api
@@ -48,6 +49,7 @@ services:
       - ./.env
     depends_on:
       - celery
+      - rabbitmq
 
   dashboard:
     <<: *api
@@ -59,3 +61,4 @@ services:
     depends_on:
       - api
       - celery
+      - rabbitmq
