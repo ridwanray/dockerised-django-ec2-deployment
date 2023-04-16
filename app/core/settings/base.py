@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 WSGI_APPLICATION = "core.wsgi.application"
 ASGI_APPLICATION = "core.asgi.application"
 CORS_ALLOW_ALL_ORIGINS = True
-CSRF_TRUSTED_ORIGINS = ["https://*.harbor-inc.com"]
+CSRF_TRUSTED_ORIGINS = ["https://*.ridwanray.com"]
 LOGIN_URL = "rest_framework:login"
 LOGOUT_URL = "rest_framework:logout"
 
