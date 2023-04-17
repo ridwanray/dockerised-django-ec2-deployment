@@ -10,6 +10,7 @@ celerybeat-schedule
 setup.cfg
 .env
 .env.deploy
+.env.production
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
