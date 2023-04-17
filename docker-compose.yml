@@ -15,18 +15,6 @@ services:
       - ./.env
     restart: unless-stopped
 
-  rabbitmq:
-    image: rabbitmq:3.8-management-alpine
-    environment:
-      - RABBITMQ_DEFAULT_USER=rabbit_user
-      - RABBITMQ_DEFAULT_PASS=rabbit_pass
-    ports:
-      - 5672:5672
-      - 15672:15672
-    volumes:
-      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
-      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
-
   celery:
     <<: *api
     command: celery -A core worker --loglevel=info 
@@ -37,7 +25,6 @@ services:
       - ./.env
     depends_on:
       - api
-      - rabbitmq
 
   celery-beat:
     <<: *api
@@ -49,7 +36,6 @@ services:
       - ./.env
     depends_on:
       - celery
-      - rabbitmq
 
   dashboard:
     <<: *api
@@ -61,4 +47,3 @@ services:
     depends_on:
       - api
       - celery
-      - rabbitmq
