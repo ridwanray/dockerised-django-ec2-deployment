@@ -44,6 +44,8 @@ services:
       - '25559:5555'
     env_file:
       - ./.env
+    environment:
+      - RABBITMQ_URL=amqps://hctzbmyb:fDnvu
     depends_on:
       - api
       - celery
