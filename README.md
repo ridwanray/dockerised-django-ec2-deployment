@@ -14,6 +14,12 @@ can be transferred to any server instance
 - gunicorn:Production ready web server for python/djangpo
 - Flower dashboard: For monitoring celery background task
 
+
+## By the end of this tutorial
+
+- We would be able to deploy a Django api running at ap1.example.com
+- Flower dashboard for monitoring celery background task at dashboard.example.com
+
 ## Running locally
 
 Create a .env file by copying the .env.sample provided and run:
@@ -89,4 +95,11 @@ Access docs:
 http://localhost:8000/api/v1/doc
 ```
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot1.png)
+
+
+## Deployed API
+![Screenshot](screenshot2.png)
+
+## Flower dashboard
+![Screenshot](screenshot3.png)
