@@ -13,6 +13,7 @@ can be transferred to any server instance
 - Letsencrypt & Certbot:SSL certificate
 - gunicorn:Production ready web server for python/djangpo
 - Flower dashboard: For monitoring celery background task
+- PostgreSQL: Relational DB
 
 
 ## By the end of this tutorial
