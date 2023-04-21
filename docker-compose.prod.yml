@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: docker/prod/Dockerfile
-    image: ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/django-api
+    image: 123456789.dkr.ecr.us-east-1.amazonaws.com/django-api
     command: gunicorn -w 4 core.wsgi -b 0.0.0.0:8000 --timeout 420
     volumes:
       - ./app:/app
@@ -44,8 +44,6 @@ services:
       - '25559:5555'
     env_file:
       - ./.env
-    environment:
-      - RABBITMQ_URL=amqps://hctzbmyb:fDnvu
     depends_on:
       - api
       - celery
