@@ -11,8 +11,8 @@ can be transferred to any server instance
 - Rabbit MQ: A message broker for celery
 - Nginx:Reverse proxy
 - Letsencrypt & Certbot:SSL certificate
-- gunicorn:Production ready web server for python/djangpo
-- Flower dashboard: For monitoring celery background task
+- gunicorn:Production ready web server for python/djang0
+- Flower dashboard: For monitoring celery background tasks
 - PostgreSQL: Relational DB
 
 
