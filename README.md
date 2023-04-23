@@ -14,6 +14,7 @@ can be transferred to any server instance
 - gunicorn:Production ready web server for python/djang0
 - Flower dashboard: For monitoring celery background tasks
 - PostgreSQL: Relational DB
+-GitActions: Handles automated image building and deployment [Automated Deployment](https://github.com/ridwanray/automated-ec2-deploy)
 
 
 ## By the end of this tutorial
